@@ -15,13 +15,13 @@ public class BillBean {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
-	private Integer id;
+	@Column(name = "BILLId")
+	private Integer billID;
 	
 	
 
-	@Column(name = "ORDER")
-	private String order;
+	@Column(name = "ORDERSID")
+	private Integer ordersID;
 	
 	@Column(name = "PAYTIME")
 	private Date paytime;
@@ -29,25 +29,38 @@ public class BillBean {
 	
 	@Column(name = "SHIPPINGRATE")
 	private Integer shippingrate;
+	
+	@Column(name = "USERID")
+	private Integer userID;
+	
+	@Column(name = "TOTALPRICE")
+	private Integer totalprice;
+	
+	@Column(name = "PAID")
+	private Integer paid;
+	
+	
+	@Column(name = "SHIPPED")
+	private boolean shipped;
 
 
-	public Integer getId() {
-		return id;
+	public Integer getBillID() {
+		return billID;
 	}
 
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setBillID(Integer billID) {
+		this.billID = billID;
 	}
 
 
-	public String getOrder() {
-		return order;
+	public Integer getOrdersID() {
+		return ordersID;
 	}
 
 
-	public void setOrder(String order) {
-		this.order = order;
+	public void setOrdersID(Integer ordersID) {
+		this.ordersID = ordersID;
 	}
 
 
@@ -71,11 +84,55 @@ public class BillBean {
 	}
 
 
+	public Integer getUserID() {
+		return userID;
+	}
+
+
+	public void setUserID(Integer userID) {
+		this.userID = userID;
+	}
+
+
+	public Integer getTotalprice() {
+		return totalprice;
+	}
+
+
+	public void setTotalprice(Integer totalprice) {
+		this.totalprice = totalprice;
+	}
+
+
+	public Integer getPaid() {
+		return paid;
+	}
+
+
+	public void setPaid(Integer paid) {
+		this.paid = paid;
+	}
+
+
+	public boolean isShipped() {
+		return shipped;
+	}
+
+
+	public void setShipped(boolean shipped) {
+		this.shipped = shipped;
+	}
+
+
 	@Override
 	public String toString() {
-		return "BillBean [id=" + id + ", order=" + order + ", paytime=" + paytime + ", shippingrate=" + shippingrate
-				+ "]";
+		return "BillBean [billID=" + billID + ", ordersID=" + ordersID + ", paytime=" + paytime + ", shippingrate="
+				+ shippingrate + ", userID=" + userID + ", totalprice=" + totalprice + ", paid=" + paid + ", shipped="
+				+ shipped + "]";
 	}
+
+
+	
 	
 	
 	

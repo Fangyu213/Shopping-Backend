@@ -15,13 +15,13 @@ import javax.persistence.Table;
 public class ProductsCommentsBean {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
-	private Integer id;
+	@Column(name = "COMMENTSId")
+	private Integer commentsID;
 	
 	
 
 	@Column(name = "USERID")
-	private String userid;
+	private Integer userID;
 	
 	@Column(name = "MESSAGES")
 	private String messages;
@@ -29,4 +29,55 @@ public class ProductsCommentsBean {
 	
 	@Column(name = "UPDATETIME")
 	private Date updatetime;
+	
+	@Column(name = "PRODUCTSID")
+	private Integer productsID;
+
+	public Integer getCommentsID() {
+		return commentsID;
+	}
+
+	public void setCommentsID(Integer commentsID) {
+		this.commentsID = commentsID;
+	}
+
+	public Integer getUserID() {
+		return userID;
+	}
+
+	public void setUserID(Integer userID) {
+		this.userID = userID;
+	}
+
+	public String getMessages() {
+		return messages;
+	}
+
+	public void setMessages(String messages) {
+		this.messages = messages;
+	}
+
+	public Date getUpdatetime() {
+		return updatetime;
+	}
+
+	public void setUpdatetime(Date updatetime) {
+		this.updatetime = updatetime;
+	}
+
+	public Integer getProductsID() {
+		return productsID;
+	}
+
+	public void setProductsID(Integer productsID) {
+		this.productsID = productsID;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductsCommentsBean [commentsID=" + commentsID + ", userID=" + userID + ", messages=" + messages
+				+ ", updatetime=" + updatetime + ", productsID=" + productsID + "]";
+	}
+	
+	
 }

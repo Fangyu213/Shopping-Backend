@@ -8,11 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import tw.edu.shopping.gloria.shopping.domain.BillBean;
 import tw.edu.shopping.gloria.shopping.domain.FavoritesBean;
-import tw.edu.shopping.gloria.shopping.domain.OdersBean;
+import tw.edu.shopping.gloria.shopping.domain.OrdersBean;
 import tw.edu.shopping.gloria.shopping.domain.ProductsBean;
 import tw.edu.shopping.gloria.shopping.domain.ProductsCommentsBean;
 import tw.edu.shopping.gloria.shopping.domain.ProductsphotoBean;
-import tw.edu.shopping.gloria.shopping.domain.TradesBean;
 import tw.edu.shopping.gloria.shopping.domain.UserBean;
 import tw.edu.shopping.gloria.shopping.service.BillService;
 import tw.edu.shopping.gloria.shopping.service.FavoritesService;
@@ -20,7 +19,7 @@ import tw.edu.shopping.gloria.shopping.service.OdersService;
 import tw.edu.shopping.gloria.shopping.service.ProductsCommmentsService;
 import tw.edu.shopping.gloria.shopping.service.ProductsService;
 import tw.edu.shopping.gloria.shopping.service.ProductsphotoService;
-import tw.edu.shopping.gloria.shopping.service.TradesService;
+
 import tw.edu.shopping.gloria.shopping.service.UserService;
 
 
@@ -31,8 +30,6 @@ class ShoppingApplicationTests {
 	@Autowired
 	private  UserService  userService;
 	
-	@Autowired
-	private  TradesService tradeService;
 	
 	@Autowired
 	private  BillService billService;
@@ -54,47 +51,41 @@ class ShoppingApplicationTests {
 	
 	
 
-	//@Test
+	@Test
 	public void userBean() {
-	//System.out.println("Hi");
 	List<UserBean> beans= userService.selectAll();
 	System.out.println(beans);
 	}
 	
-	//@Test
-	public void tradesBean() {
-	List<TradesBean> tradebeans=tradeService.selectAll();
-	System.out.println(tradebeans);
-	
-	}
+
 	
 	
-	//@Test
+	@Test
 	public void billBean() {
 	List<BillBean> billbeans=billService.selectAll();
 	System.out.println(billbeans);
 	}
 	
-	//@Test
+	@Test
 	public void favoritesBean() {
 	List<FavoritesBean> favoritesbeans=favoritesService.selectAll();
 	System.out.println(favoritesbeans);
 	}
 	
-	//@Test
+	@Test
 	public void odersBean() {
-	List<OdersBean> odersbeans=odersService.selectAll();
+	List<OrdersBean> odersbeans=odersService.selectAll();
 	System.out.println(odersbeans);
 	}
 	
-	//@Test
+	@Test
 	public void productsCommentsBean() {
 	List<ProductsCommentsBean> productsCommentsbeans= productsCommentsService.selectAll();
 	System.out.println(productsCommentsbeans);
 	
 	}
 	
-	//@Test
+	@Test
 	public void productsBean() {
 	List<ProductsBean> productsbeans= productsService.selectAll();
 	System.out.println(productsbeans);

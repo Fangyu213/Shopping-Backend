@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import tw.edu.shopping.gloria.shopping.dao.BillRepository;
 import tw.edu.shopping.gloria.shopping.dao.OdersRepository;
 import tw.edu.shopping.gloria.shopping.domain.BillBean;
-import tw.edu.shopping.gloria.shopping.domain.OdersBean;
+import tw.edu.shopping.gloria.shopping.domain.OrdersBean;
 
 @Service
 public class OdersService {
@@ -17,7 +17,7 @@ public class OdersService {
 	@Autowired
 	private  OdersRepository oders;
 	
-	public List<OdersBean> selectAll() {
+	public List<OrdersBean> selectAll() {
 		return  oders.findAll(); 
 	}
 

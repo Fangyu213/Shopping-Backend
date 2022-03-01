@@ -15,15 +15,15 @@ public class FavoritesBean {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "Id")
-	private Integer id;
+	private Integer ID;
 	
 	
 
 	@Column(name = "USERID")
-	private Integer userid;
+	private Integer userID;
 	
-	@Column(name = "PRODUCTID")
-	private Integer productid;
+	@Column(name = "PRODUCTSID")
+	private Integer productsid;
 	
 	
 	@Column(name = "UPDATETIME")

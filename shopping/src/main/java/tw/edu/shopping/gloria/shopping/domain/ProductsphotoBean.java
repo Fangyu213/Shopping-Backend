@@ -15,12 +15,9 @@ public class ProductsphotoBean {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
-	private Integer id;
+	@Column(name = "PHOTOID")
+	private Integer photoID;
 	
-
-	
-
 	@Column(name = "PHOTO")
 	private String photo;
 	
@@ -30,54 +27,58 @@ public class ProductsphotoBean {
 
 	@Column(name = "UPLOADTIME")
 	private Date uploadtime;
+	
+	@Column(name = "PRODUCTSID")
+	private Integer productsID;
 
-
-	public Integer getId() {
-		return id;
+	public Integer getPhotoID() {
+		return photoID;
 	}
 
-
-	public void setId(Integer id) {
-		this.id = id;
+	public void setPhotoID(Integer photoID) {
+		this.photoID = photoID;
 	}
-
 
 	public String getPhoto() {
 		return photo;
 	}
 
-
 	public void setPhoto(String photo) {
 		this.photo = photo;
 	}
-
 
 	public String getIntroduction() {
 		return introduction;
 	}
 
-
 	public void setIntroduction(String introduction) {
 		this.introduction = introduction;
 	}
-
 
 	public Date getUploadtime() {
 		return uploadtime;
 	}
 
-
 	public void setUploadtime(Date uploadtime) {
 		this.uploadtime = uploadtime;
 	}
 
+	public Integer getProductsID() {
+		return productsID;
+	}
+
+	public void setProductsID(Integer productsID) {
+		this.productsID = productsID;
+	}
 
 	@Override
 	public String toString() {
-		return "ProductsphotoBean [id=" + id + ", photo=" + photo + ", introduction=" + introduction + ", uploadtime="
-				+ uploadtime + "]";
+		return "ProductsphotoBean [photoID=" + photoID + ", photo=" + photo + ", introduction=" + introduction
+				+ ", uploadtime=" + uploadtime + ", productsID=" + productsID + "]";
 	}
 
+
+	
 
 	
 }

@@ -18,8 +18,8 @@ import org.springframework.stereotype.Component;
 	public class UserBean {
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
-		@Column(name = "Id")
-		private Integer id;
+		@Column(name = "USERID")
+		private Integer userID;
 		
 	
 		@Column(name = "NAME")
@@ -53,11 +53,11 @@ import org.springframework.stereotype.Component;
 		private String creditcards;
 		
 		public Integer getId() {
-			return id;
+			return userID;
 		}
 
 		public void setId(Integer id) {
-			this.id = id;
+			this.userID = id;
 		}
 
 		public String getName() {
@@ -132,12 +132,7 @@ import org.springframework.stereotype.Component;
 			this.creditcards = creditcards;
 		}
 
-		@Override
-		public String toString() {
-			return "UserBean [id=" + id + ", name=" + name + ", password=" + password + ", nickname=" + nickname
-					+ ", gender=" + gender + ", birthday=" + birthday + ", phone=" + phone + ", address=" + address
-					+ ", email=" + email + ", creditcards=" + creditcards + "]";
-		}
+		
 		
 
 	}

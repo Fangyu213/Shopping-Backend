@@ -15,8 +15,8 @@ public class ProductsBean {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
-	private Integer id;
+	@Column(name = "PRODUCTSId")
+	private Integer productsID;
 	
 	
 	@Column(name = "NAME")
@@ -26,7 +26,7 @@ public class ProductsBean {
 	private Integer price;
 	
 	@Column(name = "PHOTOID")
-	private String photoid;
+	private String photoID;
 	
 	
 	@Column(name = "INTRODUCTION")
@@ -35,12 +35,12 @@ public class ProductsBean {
 	@Column(name = "STORAGE")
 	private Integer storage;
 
-	public Integer getId() {
-		return id;
+	public Integer getProductsID() {
+		return productsID;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setProductsID(Integer productsID) {
+		this.productsID = productsID;
 	}
 
 	public String getName() {
@@ -59,12 +59,12 @@ public class ProductsBean {
 		this.price = price;
 	}
 
-	public String getPhotoid() {
-		return photoid;
+	public String getPhotoID() {
+		return photoID;
 	}
 
-	public void setPhotoid(String photoid) {
-		this.photoid = photoid;
+	public void setPhotoID(String photoID) {
+		this.photoID = photoID;
 	}
 
 	public String getIntroduction() {
@@ -85,9 +85,10 @@ public class ProductsBean {
 
 	@Override
 	public String toString() {
-		return "ProductsBean [id=" + id + ", name=" + name + ", price=" + price + ", photoid=" + photoid
+		return "ProductsBean [productsID=" + productsID + ", name=" + name + ", price=" + price + ", photoID=" + photoID
 				+ ", introduction=" + introduction + ", storage=" + storage + "]";
 	}
+
 	
 	
 	
