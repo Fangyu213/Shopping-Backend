@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,18 +32,32 @@ public abstract class OrdersBean {
 	@Column(name = "ODERTIME")
 	private Date ordertime;
 	
-	@Column(name = "BILLID")
-	private Integer billID;
-	
+	@ManyToOne
+	@JoinColumn(
+		name= "BILLID",
+		referencedColumnName = "BILLID"		
+	)
+	private BillBean billBean;
+
+	public BillBean getBillBean() {
+		return billBean;
+	}
+
+	public void setBillBean(BillBean billBean) {
+		this.billBean = billBean;
+	}
+
 	@Column(name = "USERID")
 	private Integer userID;
-
-	public Integer getOdersID() {
+	
+	
+	
+	public Integer getOrdersID() {
 		return ordersID;
 	}
 
-	public void setOdersID(Integer odersID) {
-		this.ordersID = odersID;
+	public void setOrdersID(Integer ordersID) {
+		this.ordersID = ordersID;
 	}
 
 	public Integer getProductsID() {
@@ -68,14 +84,6 @@ public abstract class OrdersBean {
 		this.ordertime = ordertime;
 	}
 
-	public Integer getBillID() {
-		return billID;
-	}
-
-	public void setBillID(Integer billID) {
-		this.billID = billID;
-	}
-
 	public Integer getUserID() {
 		return userID;
 	}
@@ -87,7 +95,7 @@ public abstract class OrdersBean {
 	@Override
 	public String toString() {
 		return "OdersBean [ordersID=" + ordersID + ", productsID=" + productsID + ", number=" + number + ", ordertime="
-				+ ordertime + ", billID=" + billID + ", userID=" + userID + "]";
+				+ ordertime + ", userID=" + userID + "]";
 	}
 
 	

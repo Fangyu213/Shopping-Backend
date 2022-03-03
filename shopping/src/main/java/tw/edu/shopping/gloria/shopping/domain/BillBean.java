@@ -1,12 +1,15 @@
 package tw.edu.shopping.gloria.shopping.domain;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,14 +18,25 @@ public class BillBean {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "BILLId")
+	@Column(name = "BILLID")
 	private Integer billID;
 	
 	
-
-	@Column(name = "ORDERSID")
-	private Integer ordersID;
+	@OneToMany(mappedBy = "billBean",
+			cascade = {
+					CascadeType.REMOVE
+			})
+	private List<OrdersBean> ordersBeans;
 	
+	public List<OrdersBean> getOrdersBeans() {
+		return ordersBeans;
+	}
+
+	public void setOrdersBeans(List<OrdersBean> ordersBeans) {
+		this.ordersBeans = ordersBeans;
+	}
+
+
 	@Column(name = "PAYTIME")
 	private Date paytime;
 	
@@ -52,17 +66,6 @@ public class BillBean {
 	public void setBillID(Integer billID) {
 		this.billID = billID;
 	}
-
-
-	public Integer getOrdersID() {
-		return ordersID;
-	}
-
-
-	public void setOrdersID(Integer ordersID) {
-		this.ordersID = ordersID;
-	}
-
 
 	public Date getPaytime() {
 		return paytime;
@@ -126,7 +129,7 @@ public class BillBean {
 
 	@Override
 	public String toString() {
-		return "BillBean [billID=" + billID + ", ordersID=" + ordersID + ", paytime=" + paytime + ", shippingrate="
+		return "BillBean [billID=" + billID + ", paytime=" + paytime + ", shippingrate="
 				+ shippingrate + ", userID=" + userID + ", totalprice=" + totalprice + ", paid=" + paid + ", shipped="
 				+ shipped + "]";
 	}

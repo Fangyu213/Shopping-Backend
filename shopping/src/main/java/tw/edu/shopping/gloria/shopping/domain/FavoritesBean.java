@@ -1,31 +1,24 @@
 package tw.edu.shopping.gloria.shopping.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="FAVORITES")
-public class FavoritesBean {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Id")
-	private Integer ID;
-	
-	
+public class FavoritesBean implements Serializable{
 
-	@Column(name = "USERID")
-	private Integer userID;
+	@EmbeddedId
+	private FavoriteId favoriteId;
+
 	
-	@Column(name = "PRODUCTSID")
-	private Integer productsid;
-	
-	
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "UPDATETIME")
-	private Date updatetime;
+	private Date updatetime= new java.util.Date();
 }
