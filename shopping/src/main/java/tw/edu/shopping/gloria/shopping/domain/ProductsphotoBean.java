@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="PRODUCTSPHOTO")
@@ -28,8 +32,21 @@ public class ProductsphotoBean {
 	@Column(name = "UPLOADTIME")
 	private Date uploadtime;
 	
-	@Column(name = "PRODUCTSID")
-	private Integer productsID;
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(
+			name = "PRODUCTSID",
+			referencedColumnName = "productsid"
+			)
+	private ProductsBean productsbean;
+	
+	public ProductsBean getProductsbean() {
+		return productsbean;
+	}
+
+	public void setProductsbean(ProductsBean productsbean) {
+		this.productsbean = productsbean;
+	}
 
 	public Integer getPhotoID() {
 		return photoID;
@@ -63,19 +80,7 @@ public class ProductsphotoBean {
 		this.uploadtime = uploadtime;
 	}
 
-	public Integer getProductsID() {
-		return productsID;
-	}
-
-	public void setProductsID(Integer productsID) {
-		this.productsID = productsID;
-	}
-
-	@Override
-	public String toString() {
-		return "ProductsphotoBean [photoID=" + photoID + ", photo=" + photo + ", introduction=" + introduction
-				+ ", uploadtime=" + uploadtime + ", productsID=" + productsID + "]";
-	}
+	
 
 
 	
