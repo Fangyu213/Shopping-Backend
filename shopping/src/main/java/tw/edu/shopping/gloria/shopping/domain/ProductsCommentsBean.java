@@ -20,8 +20,6 @@ public class ProductsCommentsBean {
 	@Column(name = "Id")
 	private Integer id;
 	
-	
-	@JsonIgnore
 	@Column(name = "USERID")
 	private String userid;
 	
