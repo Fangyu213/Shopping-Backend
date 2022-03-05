@@ -18,8 +18,8 @@ public class ProductsCommentsBean {
 	@Column(name = "COMMENTSId")
 	private Integer commentsID;
 	
+	//test
 	
-
 	@Column(name = "USERID")
 	private Integer userID;
 	
