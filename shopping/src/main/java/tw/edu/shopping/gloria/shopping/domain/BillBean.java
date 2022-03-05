@@ -22,7 +22,7 @@ public class BillBean {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "BILLID")
 	private Integer billID;
-//	@Join
+
 	
 	@OneToMany(mappedBy = "billBean",
 			cascade = {
