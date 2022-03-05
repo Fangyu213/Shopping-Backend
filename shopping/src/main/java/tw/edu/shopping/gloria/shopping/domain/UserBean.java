@@ -1,16 +1,17 @@
 package tw.edu.shopping.gloria.shopping.domain;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.stereotype.Component;
 
 
 	@Entity
@@ -52,14 +53,66 @@ import org.springframework.stereotype.Component;
 		@Column(name = "CREDITCARDS")
 		private String creditcards;
 		
-		public Integer getId() {
+		
+		@OneToMany(mappedBy = "userBean",
+				cascade = {
+						CascadeType.REMOVE
+				})
+		private List<BillBean> billBean;
+		
+		public List<BillBean> getBillBean() {
+			return billBean;
+		}
+		public void setBillBean(List<BillBean> billBean) {
+			this.billBean = billBean;
+		}
+		
+		@OneToMany(mappedBy = "userBean",
+				cascade = {
+						CascadeType.REMOVE
+				})
+		private List<ProductsCommentsBean> productsCommentsBean;
+		
+		public List<ProductsCommentsBean> getProductsCommentsBean() {
+			return productsCommentsBean;
+		}
+		public void setProductsCommentsBean(List<ProductsCommentsBean> productsCommentsBean) {
+			this.productsCommentsBean = productsCommentsBean;
+		}
+//		
+//		@OneToMany(mappedBy = "userBean",
+//				cascade = {
+//						CascadeType.REMOVE
+//				})
+//		private List<FavoritesBean> favoritesBean;
+//
+//		public List<FavoritesBean> getFavoritesBean() {
+//			return favoritesBean;
+//		}
+//		public void setFavoritesBean(List<FavoritesBean> favoritesBean) {
+//			this.favoritesBean = favoritesBean;
+//		}
+	
+		
+		@OneToMany(mappedBy = "userBean",
+				cascade = {
+						CascadeType.REMOVE
+				})
+		private List<OrdersBean> ordersBean;
+		
+		
+		public List<OrdersBean> getOrdersBean() {
+			return ordersBean;
+		}
+		public void setOrdersBean(List<OrdersBean> ordersBean) {
+			this.ordersBean = ordersBean;
+		}
+		public Integer getUserID() {
 			return userID;
 		}
-
-		public void setId(Integer id) {
-			this.userID = id;
+		public void setUserID(Integer userID) {
+			this.userID = userID;
 		}
-
 		public String getName() {
 			return name;
 		}

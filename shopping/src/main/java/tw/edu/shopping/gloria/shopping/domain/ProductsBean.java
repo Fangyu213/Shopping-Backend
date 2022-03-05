@@ -1,12 +1,16 @@
 package tw.edu.shopping.gloria.shopping.domain;
 
-import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -34,6 +38,67 @@ public class ProductsBean {
 	
 	@Column(name = "STORAGE")
 	private Integer storage;
+	
+	
+	@OneToMany(mappedBy = "productsBean",
+			cascade = {
+					CascadeType.REMOVE
+			})
+	private List<OrdersBean> ordersBean;
+	
+	public List<OrdersBean> getOrdersBean() {
+		return ordersBean;
+	}
+
+	public void setOrdersBean(List<OrdersBean> ordersBean) {
+		this.ordersBean = ordersBean;
+	}
+
+	
+	@OneToMany(mappedBy = "productsBean",
+			cascade = {
+					CascadeType.REMOVE
+			})
+	private List<ProductsphotoBean> productsphotoBean;
+	
+	
+	
+	public List<ProductsphotoBean> getProductsphotoBean() {
+		return productsphotoBean;
+	}
+
+	public void setProductsphotoBean(List<ProductsphotoBean> productsphotoBean) {
+		this.productsphotoBean = productsphotoBean;
+	}
+
+	@OneToMany(mappedBy = "productsBean",
+			cascade = {
+					CascadeType.REMOVE
+			})
+	private List<ProductsCommentsBean> productsCommentsBean;
+	
+	public List<ProductsCommentsBean> getProductsCommentsBean() {
+		return productsCommentsBean;
+	}
+
+	public void setProductsCommentsBean(List<ProductsCommentsBean> productsCommentsBean) {
+		this.productsCommentsBean = productsCommentsBean;
+	}
+
+	
+	@OneToMany(mappedBy = "productsBean",
+			cascade = {
+					CascadeType.REMOVE
+			})
+	private List<FavoritesBean> favoritesBean;
+	
+	public List<FavoritesBean> getFavoritesBean() {
+		return favoritesBean;
+	}
+
+	public void setFavoritesBean(List<FavoritesBean> favoritesBean) {
+		this.favoritesBean = favoritesBean;
+	}
 
 	public Integer getProductsID() {
 		return productsID;

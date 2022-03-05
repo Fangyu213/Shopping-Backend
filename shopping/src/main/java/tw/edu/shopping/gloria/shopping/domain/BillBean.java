@@ -9,6 +9,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -32,8 +34,20 @@ public class BillBean {
 		return ordersBeans;
 	}
 
-	public void setOrdersBeans(List<OrdersBean> ordersBeans) {
-		this.ordersBeans = ordersBeans;
+	
+	@ManyToOne
+	@JoinColumn(
+		name= "USERID",
+		referencedColumnName = "userID"		
+	)
+	private UserBean userBean;
+	
+	public UserBean getUserBean() {
+		return userBean;
+	}
+
+	public void setUserBean(UserBean userBean) {
+		this.userBean = userBean;
 	}
 
 
@@ -44,9 +58,7 @@ public class BillBean {
 	@Column(name = "SHIPPINGRATE")
 	private Integer shippingrate;
 	
-	@Column(name = "USERID")
-	private Integer userID;
-	
+
 	@Column(name = "TOTALPRICE")
 	private Integer totalprice;
 	
@@ -87,16 +99,6 @@ public class BillBean {
 	}
 
 
-	public Integer getUserID() {
-		return userID;
-	}
-
-
-	public void setUserID(Integer userID) {
-		this.userID = userID;
-	}
-
-
 	public Integer getTotalprice() {
 		return totalprice;
 	}
@@ -130,7 +132,7 @@ public class BillBean {
 	@Override
 	public String toString() {
 		return "BillBean [billID=" + billID + ", paytime=" + paytime + ", shippingrate="
-				+ shippingrate + ", userID=" + userID + ", totalprice=" + totalprice + ", paid=" + paid + ", shipped="
+				+ shippingrate + ", totalprice=" + totalprice + ", paid=" + paid + ", shipped="
 				+ shipped + "]";
 	}
 

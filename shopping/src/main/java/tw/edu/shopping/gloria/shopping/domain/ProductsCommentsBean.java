@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,37 +20,56 @@ public class ProductsCommentsBean {
 	@Column(name = "COMMENTSId")
 	private Integer commentsID;
 	
-	
 
-	@Column(name = "USERID")
-	private Integer userID;
-	
 	@Column(name = "MESSAGES")
 	private String messages;
 	
 	
 	@Column(name = "UPDATETIME")
 	private Date updatetime;
+		
+	@ManyToOne
+	@JoinColumn(
+		name= "USERID",
+		referencedColumnName = "userID"		
+	)
+	private UserBean userBean;
 	
-	@Column(name = "PRODUCTSID")
-	private Integer productsID;
+
+	public UserBean getUserBean() {
+		return userBean;
+	}
+
+	public void setUserBean(UserBean userBean) {
+		this.userBean = userBean;
+	}
+
+	@ManyToOne
+	@JoinColumn(
+		name= "PRODUCTSID",
+		referencedColumnName = "productsID"		
+	)
+	private ProductsBean productsBean;
+	
+	public ProductsBean getProductsBean() {
+		return productsBean;
+	}
+
+	public void setProductsBean(ProductsBean productsBean) {
+		this.productsBean = productsBean;
+	}
+	
+	
+
+	
 
 	public Integer getCommentsID() {
 		return commentsID;
 	}
-
 	public void setCommentsID(Integer commentsID) {
 		this.commentsID = commentsID;
 	}
-
-	public Integer getUserID() {
-		return userID;
-	}
-
-	public void setUserID(Integer userID) {
-		this.userID = userID;
-	}
-
+	
 	public String getMessages() {
 		return messages;
 	}
@@ -65,19 +86,6 @@ public class ProductsCommentsBean {
 		this.updatetime = updatetime;
 	}
 
-	public Integer getProductsID() {
-		return productsID;
-	}
-
-	public void setProductsID(Integer productsID) {
-		this.productsID = productsID;
-	}
-
-	@Override
-	public String toString() {
-		return "ProductsCommentsBean [commentsID=" + commentsID + ", userID=" + userID + ", messages=" + messages
-				+ ", updatetime=" + updatetime + ", productsID=" + productsID + "]";
-	}
 	
 	
 }

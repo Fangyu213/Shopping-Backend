@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,14 +29,25 @@ public class ProductsphotoBean {
 
 	@Column(name = "UPLOADTIME")
 	private Date uploadtime;
-	
-	@Column(name = "PRODUCTSID")
-	private Integer productsID;
 
+	
+	
+	@ManyToOne
+	@JoinColumn(
+		name= "PRODUCTSID",
+		referencedColumnName = "productsID"		
+	)
+	private ProductsBean productsBean;
+	
+	public ProductsBean getProductsBean() {
+		return productsBean;
+	}
+	public void setProductsBean(ProductsBean productsBean) {
+		this.productsBean = productsBean;
+	}
 	public Integer getPhotoID() {
 		return photoID;
 	}
-
 	public void setPhotoID(Integer photoID) {
 		this.photoID = photoID;
 	}
@@ -62,23 +75,6 @@ public class ProductsphotoBean {
 	public void setUploadtime(Date uploadtime) {
 		this.uploadtime = uploadtime;
 	}
-
-	public Integer getProductsID() {
-		return productsID;
-	}
-
-	public void setProductsID(Integer productsID) {
-		this.productsID = productsID;
-	}
-
-	@Override
-	public String toString() {
-		return "ProductsphotoBean [photoID=" + photoID + ", photo=" + photo + ", introduction=" + introduction
-				+ ", uploadtime=" + uploadtime + ", productsID=" + productsID + "]";
-	}
-
-
-	
 
 	
 }

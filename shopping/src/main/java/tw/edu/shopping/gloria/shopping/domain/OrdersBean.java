@@ -21,10 +21,6 @@ public abstract class OrdersBean {
 	private Integer ordersID;
 	
 	
-
-	@Column(name = "PRODUCTSID")
-	private Integer productsID;
-	
 	
 	@Column(name = "NUMBER")
 	private Integer number;
@@ -46,12 +42,40 @@ public abstract class OrdersBean {
 	public void setBillBean(BillBean billBean) {
 		this.billBean = billBean;
 	}
+	
+	@ManyToOne
+	@JoinColumn(
+		name= "USERID",
+		referencedColumnName = "USERID"		
+	)
+	private UserBean userBean;
+	
+	public UserBean getUserBean() {
+		return userBean;
+	}
 
-	@Column(name = "USERID")
-	private Integer userID;
+	public void setUserBean(UserBean userBean) {
+		this.userBean = userBean;
+	}
+	
+	@ManyToOne
+	@JoinColumn(
+		name= "PRODUCTSID",
+		referencedColumnName = "PRODUCTSID"		
+	)
+	private ProductsBean productsBean;
+	
+	public ProductsBean getProductsBean() {
+		return productsBean;
+	}
+
+	public void setProductsBean(ProductsBean productsBean) {
+		this.productsBean = productsBean;
+	}
 	
 	
 	
+
 	public Integer getOrdersID() {
 		return ordersID;
 	}
@@ -60,13 +84,7 @@ public abstract class OrdersBean {
 		this.ordersID = ordersID;
 	}
 
-	public Integer getProductsID() {
-		return productsID;
-	}
-
-	public void setProductsID(Integer productsID) {
-		this.productsID = productsID;
-	}
+	
 
 	public Integer getNumber() {
 		return number;
@@ -84,18 +102,11 @@ public abstract class OrdersBean {
 		this.ordertime = ordertime;
 	}
 
-	public Integer getUserID() {
-		return userID;
-	}
-
-	public void setUserID(Integer userID) {
-		this.userID = userID;
-	}
 
 	@Override
 	public String toString() {
-		return "OdersBean [ordersID=" + ordersID + ", productsID=" + productsID + ", number=" + number + ", ordertime="
-				+ ordertime + ", userID=" + userID + "]";
+		return "OdersBean [ordersID=" + ordersID + ", number=" + number + ", ordertime="
+				+ ordertime + "]";
 	}
 
 	

@@ -5,6 +5,8 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 @Embeddable
 public class FavoriteId implements Serializable{
 	@Column(name = "USERID")
@@ -16,7 +18,8 @@ public class FavoriteId implements Serializable{
 	public FavoriteId() {
 		
 	}
-
+	
+	
 	public FavoriteId(Integer userID, Integer productsid) {
 		this.userID = userID;
 		this.productsid = productsid;
