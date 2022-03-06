@@ -8,10 +8,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="PRODUCTS")
@@ -22,15 +23,26 @@ public class ProductsBean {
 	@Column(name = "PRODUCTSId")
 	private Integer productsID;
 	
-	
 	@Column(name = "NAME")
 	private String name;
 	
 	@Column(name = "PRICE")
 	private Integer price;
 	
-	@Column(name = "PHOTOID")
-	private String photoID;
+	@JsonIgnore
+	@OneToMany(mappedBy = "productsbean",
+			cascade = {
+					CascadeType.REMOVE
+			})
+	private List<ProductsphotoBean> productphotobeans;
+	
+	public List<ProductsphotoBean> getProductphotobeans() {
+		return productphotobeans;
+	}
+
+	public void setProductphotobeans(List<ProductsphotoBean> productphotobeans) {
+		this.productphotobeans = productphotobeans;
+	}
 	
 	
 	@Column(name = "INTRODUCTION")
@@ -124,14 +136,6 @@ public class ProductsBean {
 		this.price = price;
 	}
 
-	public String getPhotoID() {
-		return photoID;
-	}
-
-	public void setPhotoID(String photoID) {
-		this.photoID = photoID;
-	}
-
 	public String getIntroduction() {
 		return introduction;
 	}
@@ -147,15 +151,5 @@ public class ProductsBean {
 	public void setStorage(Integer storage) {
 		this.storage = storage;
 	}
-
-	@Override
-	public String toString() {
-		return "ProductsBean [productsID=" + productsID + ", name=" + name + ", price=" + price + ", photoID=" + photoID
-				+ ", introduction=" + introduction + ", storage=" + storage + "]";
-	}
-
-	
-	
-	
 
 }

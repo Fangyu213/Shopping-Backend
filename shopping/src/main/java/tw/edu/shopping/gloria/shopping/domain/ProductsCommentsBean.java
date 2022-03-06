@@ -21,6 +21,10 @@ public class ProductsCommentsBean {
 	private Integer commentsID;
 	
 
+	
+	@Column(name = "USERID")
+	private Integer userID;
+	
 	@Column(name = "MESSAGES")
 	private String messages;
 	

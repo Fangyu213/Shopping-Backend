@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="PRODUCTSPHOTO")
 public class ProductsphotoBean {
@@ -29,6 +31,22 @@ public class ProductsphotoBean {
 
 	@Column(name = "UPLOADTIME")
 	private Date uploadtime;
+
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(
+			name = "PRODUCTSID",
+			referencedColumnName = "productsid"
+			)
+	private ProductsBean productsbean;
+	
+	public ProductsBean getProductsbean() {
+		return productsbean;
+	}
+
+	public void setProductsbean(ProductsBean productsbean) {
+		this.productsbean = productsbean;
+	}
 
 	
 	
@@ -75,6 +93,7 @@ public class ProductsphotoBean {
 	public void setUploadtime(Date uploadtime) {
 		this.uploadtime = uploadtime;
 	}
+
 
 	
 }
